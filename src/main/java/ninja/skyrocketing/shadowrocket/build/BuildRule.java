@@ -14,7 +14,7 @@ public class BuildRule {
 	public static void GFWRule() {
 		FileReader gfwDomainReader = new FileReader("conf/resultant/domain/gfw_domain.list");
 		FileReader gfwIPReader = new FileReader("conf/resultant/ip/gfw_ip.list");
-		FileReader gfwDirectReader = new FileReader("conf/resultant/direct/gfw_direct.list");
+//		FileReader gfwDirectReader = new FileReader("conf/resultant/direct/gfw_direct.list");
 		
 		FileWriter gfwWriter = new FileWriter("conf/conf_result/gfw_rule.conf");
 		
@@ -29,16 +29,16 @@ public class BuildRule {
 				gfwWriter.append("DOMAIN-KEYWORD," + line + ",PROXY,force-remote-dns" + "\n");
 			}
 		}
-		for (String line : gfwDirectReader.readLines()) {
-			if (line.startsWith("#")) {
-				continue;
-			}
-			if(line.contains(".")){
-				gfwWriter.append("DOMAIN-SUFFIX," + line + ",DIRECT" + "\n");
-			} else {
-				gfwWriter.append("DOMAIN-KEYWORD," + line + ",DIRECT" + "\n");
-			}
-		}
+//		for (String line : gfwDirectReader.readLines()) {
+//			if (line.startsWith("#")) {
+//				continue;
+//			}
+//			if(line.contains(".")){
+//				gfwWriter.append("DOMAIN-SUFFIX," + line + ",DIRECT" + "\n");
+//			} else {
+//				gfwWriter.append("DOMAIN-KEYWORD," + line + ",DIRECT" + "\n");
+//			}
+//		}
 		for (String line : gfwIPReader.readLines()) {
 			if (line.startsWith("#")) {
 				continue;
@@ -85,14 +85,14 @@ public class BuildRule {
 				"0.head",
 				"1.rule",
 				"2.host",
-				"3.url_rewrite"
+				"3.url_rewrite",
 		};
 		String[] confRuleResults = {
 				"gfw_rule",
-				"ad_rule"
+				"ad_rule",
 		};
 		String[] confHostResults = {
-				"ad_host"
+				"ad_host",
 		};
 		
 		FileWriter confWriter = new FileWriter("conf/Shadowrocket.conf");
