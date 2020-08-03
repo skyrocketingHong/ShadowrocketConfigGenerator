@@ -95,7 +95,7 @@ public class BuildRule {
 				"ad_host"
 		};
 		
-		FileWriter confWriter = new FileWriter("conf/Shadowrocket.rules.conf");
+		FileWriter confWriter = new FileWriter("conf/Shadowrocket.conf");
 		confWriter.write("# Build Time: " + DateUtil.date().toString() + "\n");
 		
 		for (String buildConfig : buildConfigs) {
