@@ -49,7 +49,10 @@ public class AdList {
 			row = row.trim();
 
 			//跳过
-			if (row.startsWith("@@") || row.equals("") || row.startsWith("!") || row.contains("$") || row.contains("##") || row.contains("/")) {
+			if (row.equals("")) {
+				continue;
+			}
+			if (row.startsWith("@@") || row.startsWith("!") || row.contains("$") || row.contains("##") || row.contains("/")) {
 				System.out.println("Ignore: \"" + row + "\".");
 				continue;
 			}

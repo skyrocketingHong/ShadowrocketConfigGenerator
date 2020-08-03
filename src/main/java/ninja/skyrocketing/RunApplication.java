@@ -11,14 +11,12 @@ import ninja.skyrocketing.shadowrocket.resultant.GFWList;
  */
 public class RunApplication {
 	private static final String[] adRulesUrl = {
-			"https://filters.adtidy.org/extension/chromium/filters/11.txt",
-			"https://filters.adtidy.org/extension/chromium/filters/224.txt",
+			"https://easylist-downloads.adblockplus.org/easylistchina.txt",
 			"https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt",
-			"https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=1&mimetype=plaintext",
+			"https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext",
 			"https://someonewhocares.org/hosts/hosts",
 			"https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers.txt",
 			"https://danny0838.github.io/content-farm-terminator/files/blocklist/content-farms.txt",
-			"https://www.malwaredomainlist.com/hostslist/hosts.txt",
 			"https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt",
 			"https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt",
 			"https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kpr_our_rule.txt",
