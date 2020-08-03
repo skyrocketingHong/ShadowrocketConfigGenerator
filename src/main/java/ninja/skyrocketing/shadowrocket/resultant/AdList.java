@@ -17,7 +17,7 @@ public class AdList {
 		TreeSet<String> domains = new TreeSet<>();
 		TreeSet<String> ips = new TreeSet<>();
 		StringBuilder tmpRules = new StringBuilder();
-		
+
 		//下载规则
 		for (String url : urls) {
 			System.out.println("Loading \"" + url + "\".");
@@ -42,30 +42,31 @@ public class AdList {
 			}
 			tmpRules.append(result).append("\n");
 		}
-		
+
 		//处理规则
 		String[] tmpRuleList = tmpRules.toString().split("\\n");
 		for (String row : tmpRuleList) {
 			row = row.trim();
-			
+
 			//跳过
-			if (row.startsWith("@@") || row.equals("") || row.startsWith("!") || row.contains("$") || row.contains("##")) {
+			if (row.startsWith("@@") || row.equals("") || row.startsWith("!") || row.contains("$") || row.contains("##") || row.contains("/")) {
+				System.out.println("Ignore: \"" + row + "\".");
 				continue;
 			}
-			
+
 			//清除前缀
 			row = row.replaceAll("^\\|?https?://", "");
 			row = row.replaceAll("^\\|\\|", "");
 			row = row.replaceAll("^\\.|/.*", "");
 			row = row.replaceAll("^(127\\.0\\.0\\.1)\\s", "");
-			
+
 			//清除后缀
 			row = row.replaceAll("/$|:\\d{2,5}$", "");
 			row = row.replaceAll(":\\d{2,5}$", "");
-			
+
 			//不能含有的字符
 			row = row.replaceAll("[/^:*]", "");
-			
+
 			//只匹配域名
 			if (row.matches("^([a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,9}$")) {
 				domains.add(row);
@@ -77,7 +78,7 @@ public class AdList {
 		}
 		//完成后输出规则个数
 		System.out.println("Done, " + (domains.size() + ips.size()) + " rules.");
-		
+
 		//写入文件
 		FileWriter domainsWriter = new FileWriter("conf/resultant/domain/ad_domain.list");
 		domainsWriter.write("# Ad Block(Domain) List Build Time: " + DateUtil.date().toString() + "\n");
